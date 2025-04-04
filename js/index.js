@@ -29,7 +29,15 @@ loadbutton();
 
 // id wise button click handler
 const loadcategory=(categoryName)=>{    
-    console.log(categoryName)
+    console.log(categoryName);
+    const cardContainer = document.getElementById("card-details");
+    // Show a loading spinner
+    cardContainer.innerHTML = `
+        <div class="flex justify-center items-center w-full h-40 ml-60">
+            <div class="w-10 h-10 border-4 border-gray-300 border-t-[#0E7A81] rounded-full animate-spin"></div>
+        </div>
+    `;
+    setTimeout(() => {
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
     .then((res)=>res.json())
     .then((data)=>{
@@ -38,8 +46,10 @@ const loadcategory=(categoryName)=>{
             displayErrorMesage(); 
         } else {
             displaycard(pets); 
-        }})
+        }
+    })
     .catch((error)=>console.log(error));   
+}, 2000);
 };
 
 
@@ -124,7 +134,7 @@ const displaycard=(pets)=>{
 
    <div class="flex justify-between">
      <button onclick="loadpetImage('${item.petId}')" class="btn bg-gray-200 p-2 rounded"><img src="https://img.icons8.com/?size=96&id=U6uSXVbuA1xU&format=png" class="w-6 h-6"/></button>
-     <button class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Adopt</button>
+     <button onclick="AdoptModal()" class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Adopt</button>
      <button onclick="loadpetdetails('${item.petId}')" class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Details</button>
    </div>
   </div>
@@ -221,7 +231,7 @@ const closeModal = () => {
 
 
 
-//function fetch for load image
+//function fetch for load image while click like button
 const loadpetImage = (petId) => {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
         .then(res => res.json())
@@ -240,6 +250,46 @@ const showImage=(petData)=>{
     imageContainer.appendChild(image_div);
 
 };
+
+
+//Function open for modal while Adopt button onclick
+const AdoptModal = () => {
+    const modal = document.getElementById("adopt-details");
+    const modalContent = document.getElementById("adopt-modal-content");
+    const cardContainer = document.getElementById("card-details"); // Background container
+
+    modalContent.innerHTML = `
+    <div class="flex flex-col items-center justify-center w-[600px]  bg-white h-96 rounded-md">
+            
+            <h1 class="text-black font-bold text-xl">Congratulations</h1>
+            <p class="text-sm text-center">Addoption process is start for your pets</p>
+             <p class="text-lg font-bold mt-4"><span id="countdown">3</span></p>
+        </div>
+    `;
+    modal.style.display = "block"; 
+    cardContainer.classList.add("blur-background");
+
+    let countdown = 3;
+    const countdownElement = document.getElementById("countdown");
+
+    // Countdown timer
+    const interval = setInterval(() => {
+        countdown--;
+        countdownElement.textContent = countdown;
+
+        if (countdown === 0) {
+            clearInterval(interval);
+        }
+    }, 1000);
+
+    // Auto-close after 3 seconds
+    setTimeout(() => {
+        modal.style.display = "none";
+        cardContainer.classList.remove("blur-background");
+    }, 3000);
+};
+
+
 
 
 
