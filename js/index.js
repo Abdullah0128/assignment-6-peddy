@@ -32,7 +32,13 @@ const loadcategory=(categoryName)=>{
     console.log(categoryName)
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
     .then((res)=>res.json())
-    .then((data)=>displaycard(data.data))
+    .then((data)=>{
+        const pets = data.data;
+        if (!pets || pets.length === 0) {
+            displayErrorMesage(); 
+        } else {
+            displaycard(pets); 
+        }})
     .catch((error)=>console.log(error));   
 };
 
@@ -92,33 +98,38 @@ const displaycard=(pets)=>{
       alt="Shoes" />
   </figure>
   <div class="card-body">
-  <p>${item.pet_name}</p>
-  <div class="flex flex-1 gap-2">
-  <div class="mt-1"><img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"/></div>
-  <div>Breed: ${item.breed}<div>
+  <p class="text-xl font-bold">${item.pet_name}</p>
+
+  <div class="flex items-center gap-2 mt-2">
+  <img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"  class="h-5 w-5"/>
+  ${item.breed?`<p>Breed: ${item.breed}</p>`:`<p>Breed : unavailable</p>`}
   </div>
-  <div class="flex flex-1 ml-[-25px] gap-2">
-  <div><img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="h-5 w-5"/></div>
-  <div>Birth: ${item.date_of_birth}<div>
+
+  <div class="flex items-center gap-2 mt-2">
+  <img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="h-5 w-5"/>
+  ${item.date_of_birth?`<p>Birth: ${item.date_of_birth}</p>`:`<p>Birth : unavailable</p>`}
   </div>
-   <div class="flex flex-1 ml-[-30px] gap-2">
-  <div><img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png" class="h-5 w-5"/></div>
-  <div>Gender: ${item.gender}<div>
+
+   <div class="flex items-center gap-2 mt-2">
+  <img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png" class="h-5 w-5"/>
+ ${item.gender?`<p>Gender: ${item.gender}</p>`:`<p>Gender : unavailable</p>`}
   </div>
-  <div class="flex flex-1 ml-[-27px] gap-2">
-  <div><img src="https://img.icons8.com/?size=32&id=44176&format=png"  class="h-5 w-5"/></div>
-  <div>Price: ${item.price}<div>
-  </div>
+
+  <div class="flex items-center gap-2 mt-2">
+  <img src="https://img.icons8.com/?size=32&id=44176&format=png"  class="h-5 w-5"/>
+  <p>Price: ${item.price}</p>
   </div>
   
-   </div><br>
-   <hr class="w-40 text-white shadow-sm"><br>
+  <hr class="w-full border-gray-300 my-3">
 
-   <button class="btn ml-[-20px]  w-14"><img src="https://img.icons8.com/?size=96&id=U6uSXVbuA1xU&format=png" class="w-16 h-6"></button>
-<button class="btn text-[#0E7A81] font-bold  w-16">Adopt</button>
-<button onclick="loadpetdetails('${item.petId}')" class="btn text-[#0E7A81] w-16 font-bold">Details</button>
+   <div class="flex justify-between">
+     <button onclick="loadpetImage('${item.petId}')" class="btn bg-gray-200 p-2 rounded"><img src="https://img.icons8.com/?size=96&id=U6uSXVbuA1xU&format=png" class="w-6 h-6"/></button>
+     <button class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Adopt</button>
+     <button onclick="loadpetdetails('${item.petId}')" class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Details</button>
+   </div>
+  </div>
 </div>
-        `
+        `;
         cardcontainer.append(card_div);
 
     });
@@ -126,6 +137,20 @@ const displaycard=(pets)=>{
 };
 
 laodcard();
+
+//which button does not contain data with card,these are showing an error message 
+const displayErrorMesage = () => {
+    const cardContainer = document.getElementById("card-details");
+    cardContainer.innerHTML = `
+        <div class="flex flex-col items-center justify-center w-[600px] mt-20 ml-20 mb-10 bg-[#D2DCFD] h-96 rounded-md">
+            <img src="image/error.webp" alt="No pets found" class="h-32 w-32 mb-4"/>
+            <h1 class="text-black font-bold text-xl">No Information Available</h1>
+            <p class="text-sm text-center">It is a long established fact that a reader will be distracted by the readable
+             content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
+    `;
+};
+
 
 
 
@@ -194,6 +219,27 @@ const closeModal = () => {
     document.getElementById("card-details").classList.remove("blur-background"); // Remove blur
 };
 
+
+
+//function fetch for load image
+const loadpetImage = (petId) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+        .then(res => res.json())
+        .then(data => showImage(data.petData)) // Updated key
+        .catch(error => console.log(error));
+};
+
+// function open while like buton onclick
+const showImage=(petData)=>{
+    const imageContainer=document.getElementById("like-container");
+    const image_div=document.createElement("div");
+    image_div.classList.add("w-28", "h-10" ,"m-2")
+    image_div.innerHTML=`
+    <img src="${petData.image}" class="object-cover m-0 p-0 h-28 w-28 rounded"/>
+    `;
+    imageContainer.appendChild(image_div);
+
+};
 
 
 
