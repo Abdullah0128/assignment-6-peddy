@@ -9,44 +9,44 @@
 </head>
 <body>
     <!-- Header -->
-    <div class="mt-5 ml-10 mr-10 flex flex-initial">
-        <div class=" flex flex-1 gap-2">
-           <div class="mt-2"><img src="image/logo.webp" alt=""></div>
-           <div class="text-3xl font-bold">Peddy</div>
+    <div class="lg:mt-5 lg:ml-10 lg:mr-10 ml-2 flex lg:justify-between justify-normal lg:gap-0 gap-4 items-center ">
+        <div class=" flex  gap-1 lg:gap-2 lg:mt-0 mt-3">
+           <img src="image/logo.webp" class="h-3 w-4 lg:h-6 lg:w-8 lg:mt-2 mt-1" alt="">
+           <p class="lg:text-3xl text-sm font-bold">Peddy</p>
         </div>
-        <div class="flex flex-1 gap-3 mt-3 text-sm">
-            <div>Home</div>
-            <div>Shop</div>
-            <div>Contact</div>
+        <div class="flex justify-center lg:gap-3 gap-2 lg:mt-3 mt-5 lg:text-sm text-[8px]">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Contact</a>
         </div>
-        <div class="h-10 w-10"><img src="https://img.icons8.com/?size=48&id=H101gtpJBVoh&format=png" alt=""></div>
+        <div class="h-10 w-10 lg:ml-[-5px] "><img src="https://img.icons8.com/?size=48&id=H101gtpJBVoh&format=png" class="h-6 w-6 mt-4 lg:mt-0 lg:h-10 lg:w-10" alt=""/></div>
     </div>
-    <div class="w-2/4 ml-[370px] text-center mt-5">
-        <p>Bringing Families Together ❤️</p>
-        <p class="text-4xl font-bold">Your Path to Adoption <br>Starts Here</p>
+    <div class="w-2/4 lg:ml-[370px] ml-5 text-center mt-5 items-center">
+        <p class="text-sm">Bringing Families Together ❤️</p>
+        <p class="lg:text-4xl text-2xl font-bold">Your Path to Adoption <br>Starts Here</p>
         <p class="text-xs pt-5">It is a long established fact that a reader will be distracted by the readable content of a 
             page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
             <button class="h-8 w-24 rounded-md bg-[#0E7A81] mt-5 text-white">View More</button>
-            <img src="image/pet.webp" class="h-64 ml-24 " alt="">
+            <img src="image/pet.webp" class="lg:h-64 lg:ml-24 h-48" alt="">
     </div>
 
     <!-- middle part for text -->
        
-        <div class="h-10 w-1/2  text-center mt-5 ml-96">
-            <h1 class="text-3xl font-bold">Adopt  Your  Best Friend</h1>
+        <div class="lg:h-10 lg:w-1/2 w-48  text-center mt-5 lg:ml-96 ml-5">
+            <h1 class="lg:text-3xl text-xl font-bold">Adopt  Your  Best Friend</h1>
             <p class="text-xs mt-5">It is a long established fact that a reader will be distracted by the readable content 
                 of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
         </div>
         
      <!-- middle part for button -->
-     <div id="category-button" class="flex gap-20 shadow-slate-200 justify-center mt-24 ml-20 mb-8">
+     <div id="category-button" class="lg:flex grid grid-rows-4 lg:gap-20 gap-4 shadow-slate-200 lg:justify-center mt-24 lg:ml-20 ml-16 mb-8">
 
      </div>
 
      <!-- after middle -->
-      <div class="flex flex-1 gap-96">
-        <div class="w-42 font-bold text-xl ml-10">Best Deal For you</div>
-        <div class="ml-96 "><button class="btn btn-wide bg-[#146065] rounded-md text-white">Sort by Price</button></div>
+      <div class="flex flex-1 lg:gap-96 gap-5">
+        <div class="lg:w-42  font-bold lg:text-xl text-[px] lg:ml-10 ml-2">Best Deal For you</div>
+        <div class="lg:ml-96  ml-2"><button class="btn btn-wide bg-[#146065] rounded-md text-white">Sort by Price</button></div>
       </div>
 
 
@@ -54,15 +54,15 @@
  <div class="grid grid-cols-2">
 
         <!-- card -->
-    <div class="rounded-md shadow-xl border border-gray-200 w-[810px] ml-6 mt-5 mb-10">
-        <div id="card-details" class="  grid grid-cols-3 ml-5 mr-5">
+    <div class="rounded-md shadow-xl border border-gray-200 lg:w-[810px] w-[150px] lg:ml-6 ml-1 mt-5 mb-2">
+        <div id="card-details" class="  grid lg:grid-cols-3 grid-cols-1 lg:ml-5 ml-3 mr-5 mb-3">
 
         </div>
     </div>
 
        <!-- for click like button -->
-   <div  class="w-72 ml-60 mt-5 rounded-md shadow-xl border border-gray-200 mb-10">
-    <div id="like-container" class="w-32 h-5 ml-5 mt-5 grid grid-cols-2 gap-28 ">
+   <div  class="lg:w-72 w-28 lg:ml-60 ml-2 mt-5 rounded-md shadow-xl border border-gray-200 mb-2">
+    <div id="like-container" class="lg:w-32 w-16 lg:h-5 h-3 lg:ml-5 ml-2 mt-5 grid lg:grid-cols-2 grid-cols-1 gap-28 ">
 
     </div>
   
@@ -74,17 +74,51 @@
 
         <!-- Modal(details button) -->
 <div id="pet-details" class=" fixed inset-0  bg-opacity-50 flex justify-center items-center hidden backdrop-blur-sm">
-    <div id="modal-content" class="bg-white p-5 rounded-lg w-1/2 ml-72 mt-5">
+    <div id="modal-content" class="bg-white p-5 rounded-lg lg:w-1/2 w-56 lg:ml-72 ml-2 mt-5">
        
     </div>
 </div>
 
       <!-- Adopt bottun -->
       <div id="adopt-details" class=" fixed inset-0  bg-opacity-50 flex justify-center items-center hidden backdrop-blur-sm">
-        <div id="adopt-modal-content" class="bg-white p-5 rounded-lg shadow-md w-[650px] ml-52 mt-5">
+        <div id="adopt-modal-content" class="bg-white p-5 rounded-lg shadow-md lg:w-[650px] w-[200px] lg:ml-52 ml-2 lg:mt-5 mt-28">
            
         </div>
     </div>
+
+
+    <!-- botton -->
+<div class="lg:flex grid grid-rows-3 lg:gap-24 gap-8 bg-gray-950 text-gray-300 lg:pl-40 pl-5 pt-7 pb-7 rounded-md">
+    <div class="lg:w-60 w-36 ">
+       <div class="flex gap-1 lg:gap-2">
+        <img src="image/logo.webp" class="h-4 w-5 lg:mt-2 mt-1" alt="">
+        <p class="lg:text-xl text-sm font-bold">Peddy</p>
+       </div>
+       <p class="text-sm mt-5">Location: av. Washington 165, NY CA 54003</p>
+       <p class="text-sm">Phone: +31 85 964 47 25</p>
+       <p class="text-sm">Email: info@yourdomain.com</p>
+       <p class="text-sm">Openings hours: 9.00 AM - 5.00 PM</p>
+       <div class="flex gap-3 mt-3">
+        <a href="https://www.faceboook.com"><img src="https://img.icons8.com/?size=96&id=118497&format=png" class="h-7 w-7" alt=""></a>
+       <a href="https://www.twitter.com"> <img src="https://img.icons8.com/?size=64&id=jlpBF1fJe9fs&format=png" class="h-6 w-6 mt-1 bg-white rounded-full" alt=""></a>
+       <a href="https://www.youtube.com"> <img src="https://img.icons8.com/?size=96&id=19318&format=png" class="h-7 w-7" alt=""></a>
+       <a href="https://www.instagram.com"> <img src="https://img.icons8.com/?size=96&id=32323&format=png" class="h-7 w-7" alt=""></a>
+       </div>
+    </div>
+    <div class="lg:w-60 w-36">
+        <p  class="lg:text-xl text-sm font-bold">Useful Links</p>
+        <p class="text-sm mt-5">Home</p>
+        <p class="text-sm">About Us</p>
+        <p class="text-sm">Animals</p>
+        <p class="text-sm">Foundation</p>
+        <p class="text-sm">Contact</p>
+    </div>
+    <div class="lg:w-60 w-36">
+        <p  class="lg:text-xl text-sm font-bold">Drop a Message</p>
+        <input type="text" placeholder="Enter your email" class="rounded-md h-7 w-40 mt-5"><br>
+        <button class="bg-[#146065] rounded-md h-7 w-40 mt-5">Subscribe</button>
+    </div>
+</div>
 
 
 

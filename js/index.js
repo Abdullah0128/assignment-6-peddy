@@ -15,7 +15,7 @@ categories.forEach((item) => {
 const buttondiv=document.createElement("div");
 console.log(item.category);
 buttondiv.innerHTML=`
-<button onclick="loadcategory('${item.category}')" class="btn">
+<button onclick="loadcategory('${item.category}')" class="btn hover:border-[#0E7A81] hover:rounded-3xl hover:border-double">
 <img src="${item.category_icon}" class="h-6 w-6"/>
 ${item.category}
 </button>
@@ -101,39 +101,39 @@ const displaycard=(pets)=>{
         const card_div=document.createElement("div");
         console.log(item.petId);
         card_div.innerHTML=`
-        <div class="card bg-base-100 w-64 shadow-md mt-5">
+        <div class="card bg-base-100 lg:w-64 w-32 shadow-md mt-5">
   <figure>
     <img
-      src="${item.image}" class="object-cover w-60 h-32 rounded-sm"
+      src="${item.image}" class="object-cover lg:w-60 w-30 lg:h-32 h-16 rounded-sm"
       alt="Shoes" />
   </figure>
   <div class="card-body">
   <p class="text-xl font-bold">${item.pet_name}</p>
 
   <div class="flex items-center gap-2 mt-2">
-  <img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"  class="h-5 w-5"/>
-  ${item.breed?`<p>Breed: ${item.breed}</p>`:`<p>Breed : unavailable</p>`}
+  <img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"  class="lg:h-5 h-3 lg:w-5 w-3"/>
+  ${item.breed?`<p class="lg:text-sm text-[8px]">Breed: ${item.breed}</p>`:`<p class="lg:text-sm text-[8px]">Breed : unavailable</p>`}
   </div>
 
   <div class="flex items-center gap-2 mt-2">
-  <img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="h-5 w-5"/>
-  ${item.date_of_birth?`<p>Birth: ${item.date_of_birth}</p>`:`<p>Birth : unavailable</p>`}
+  <img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="lg:h-5 h-3 lg:w-5 w-3"/>
+  ${item.date_of_birth?`<p class="lg:text-sm text-[8px]">Birth: ${item.date_of_birth}</p>`:`<p class="lg:text-sm text-[8px]">Birth : unavailable</p>`}
   </div>
 
    <div class="flex items-center gap-2 mt-2">
-  <img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png" class="h-5 w-5"/>
- ${item.gender?`<p>Gender: ${item.gender}</p>`:`<p>Gender : unavailable</p>`}
+  <img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png" class="lg:h-5 h-3 lg:w-5 w-3"/>
+ ${item.gender?`<p class="lg:text-sm text-[8px]">Gender: ${item.gender}</p>`:`<p class="lg:text-sm text-[8px]">Gender : unavailable</p>`}
   </div>
 
   <div class="flex items-center gap-2 mt-2">
-  <img src="https://img.icons8.com/?size=32&id=44176&format=png"  class="h-5 w-5"/>
-  <p>Price: ${item.price}</p>
+  <img src="https://img.icons8.com/?size=32&id=44176&format=png"  class="lg:h-5 h-3 lg:w-5 w-3"/>
+  <p class="lg:text-sm text-[8px]">Price: ${item.price}</p>
   </div>
   
   <hr class="w-full border-gray-300 my-3">
 
-   <div class="flex justify-between">
-     <button onclick="loadpetImage('${item.petId}')" class="btn bg-gray-200 p-2 rounded"><img src="https://img.icons8.com/?size=96&id=U6uSXVbuA1xU&format=png" class="w-6 h-6"/></button>
+   <div class="lg:flex justify-between grid grid-rows-3">
+     <button onclick="loadpetImage('${item.petId}')" class="btn bg-gray-200 p-2 rounded mb-2"><img src="https://img.icons8.com/?size=96&id=U6uSXVbuA1xU&format=png" class="w-6 h-6"/></button>
      <button onclick="AdoptModal()" class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Adopt</button>
      <button onclick="loadpetdetails('${item.petId}')" class="btn text-[#0E7A81] font-bold p-2 bg-gray-200 rounded">Details</button>
    </div>
@@ -183,13 +183,13 @@ const showModal = (petData) => {
         <div class="p-5">
          <img src="${petData.image}" class="w-full h-48 object-cover mt-2 rounded" />
             <h2 class="text-xl font-bold">${petData.pet_name}</h2>
-             <div class="grid grid-cols-2">
+             <div class="grid lg:grid-cols-2 grid-rows-2">
              <div class="flex flex-1 gap-1">
-             <div class="mt-1"><img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"/></div>
+             <div class="lg:mt-1 mt-2"><img src="https://maxst.icons8.com/vue-static/icon/svg/detailed.svg"/></div>
             <div><p><strong>Breed:</strong> ${petData.breed}</p></div>
              </div>
              <div class="flex flex-1">
-             <div><img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="h-5 w-5"/></div>
+             <div class="lg:mt-0 mt-2"><img src="https://maxst.icons8.com/vue-static/icon/svg/copy.svg" class="lg:h-5 h-3 lg:w-5 w-3"/></div>
             <div><p><strong>Birth:</strong> ${petData.date_of_birth}</p></div>
             </div>
              </div>
@@ -197,17 +197,17 @@ const showModal = (petData) => {
 
              <div class="grid grid-cols-2">
              <div class="flex flex-1 gap-1">
-             <div class="mt-1"><img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png"class="h-5 w-5"/></div>
+             <div class="lg:mt-0 mt-2"><img src="https://img.icons8.com/?size=32&id=cOGxoI2sh0Zg&format=png"lg:h-5 h-3 lg:w-5 w-3"/></div>
             <div><p><strong>Gender:</strong> ${petData.gender}</p></div>
              </div>
              <div class="flex flex-1">
-             <div><img src="https://img.icons8.com/?size=32&id=44176&format=png" class="h-5 w-5"/></div>
+             <div class="lg:mt-0 mt-2"><img src="https://img.icons8.com/?size=32&id=44176&format=png" class="lg:h-5 h-3 lg:w-5 w-3"/></div>
             <div><p><strong>Price:</strong> ${petData.price}</p></div>
             </div>
              </div>
 
             <div class="flex flex-1 gap-1">
-             <div class="mt-1"><img src="https://img.icons8.com/?size=64&id=Zm65G7peo0yW&format=png" class="h-5 w-5"/></div>
+             <div class="lg:mt-1 mt-2"><img src="https://img.icons8.com/?size=64&id=Zm65G7peo0yW&format=png" class="lg:h-5 h-3 lg:w-5 w-3"/></div>
             <div><p><strong>Vaccinated status:</strong> ${petData.vaccinated_status}</p></div>
             </div>
 
@@ -243,9 +243,9 @@ const loadpetImage = (petId) => {
 const showImage=(petData)=>{
     const imageContainer=document.getElementById("like-container");
     const image_div=document.createElement("div");
-    image_div.classList.add("w-28", "h-10" ,"m-2")
+    image_div.classList.add("lg:w-28","w-12", "lg:h-10" ,"h-5","m-2")
     image_div.innerHTML=`
-    <img src="${petData.image}" class="object-cover m-0 p-0 h-28 w-28 rounded"/>
+    <img src="${petData.image}" class="object-cover lg:m-0 ml-3 p-0 lg:h-28 h-16 lg:w-28 w-16 rounded"/>
     `;
     imageContainer.appendChild(image_div);
 
@@ -259,7 +259,7 @@ const AdoptModal = () => {
     const cardContainer = document.getElementById("card-details"); // Background container
 
     modalContent.innerHTML = `
-    <div class="flex flex-col items-center justify-center w-[600px]  bg-white h-96 rounded-md">
+    <div class="flex flex-col items-center justify-center lg:w-[600px] w-[200px]  bg-white lg:h-96 h-52 rounded-md">
             
             <h1 class="text-black font-bold text-xl">Congratulations</h1>
             <p class="text-sm text-center">Addoption process is start for your pets</p>
