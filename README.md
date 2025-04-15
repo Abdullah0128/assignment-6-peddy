@@ -18,3 +18,6 @@ This project showcases adoptable pets with dynamic cards and modals loaded from 
 - **Tailwind CSS**
 - **DaisyUI**
 - **Fake API (JSON Data)**
+
+live link
+https://abdullah0128.github.io/assignment-6-peddy/
